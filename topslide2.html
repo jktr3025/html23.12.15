@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script/jquery-3.7.1.js"></script>
+    <script lang="java">
+        
+            $(document).ready(function(){
+
+                var n = 0;  //현재 보이는 인덱스 번호 0~4
+                var count = $(".top_move li").length - 1;  
+                //length는 갯수 구하는 명령어인데 -1 해줘서 eq넘버랑 맞춰줌
+
+                console.log("count : ", count)
+
+                var time = setInterval(   top_m   , 2000)
+
+                function top_m(){
+                    if(n == count){
+                        n=0;
+                    }else{
+                        n++;
+                    }
+                    pos = n * (-400) + "px";
+                    console.log("n:" , n);
+
+                    $(".top_move").animate( {top :pos}, 500)
+
+                }  //top_m
+
+                $(".top_move , .control button").hover(function(){
+                    clearInterval(time)
+                }, function(){
+                    time = setInterval(   top_m   , 2000)
+                }) //hover
+
+                $(".next").click(function(){
+                    top_m()
+                }) // next click
+
+                function down_m(){
+                    if(n == 0){
+                        n = count;
+                        // n=4;
+                    } else{
+                        n--;
+                    }
+
+                    pos = n * (-400) + "px";
+                    $(".top_move").animate( {top :pos}, 500)
+                    console.log("d:" , n)
+                } //down_m
+
+
+                $(".prev").click(function(){
+                    down_m()
+                }) // prev click
+
+            })//jquery
+
+    </script>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            /* box-sizing: border-box; */
+        }
+
+        ul,
+        ol,
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        body{
+            background: beige;
+        }
+        h1{
+            text-align: center;
+            line-height: 2;
+            text-transform: uppercase;
+            color: brown;
+        }
+        .gallery{
+            /* border: 1px solid darkblue; */
+        }
+        .view{
+            width: 600px;height: 400px;
+            border: solid brown 5px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .top_move{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 600px;
+            height: calc(400px * 5);
+        }
+        .top_move li{
+            width: 600px;
+            height: 400px;
+            
+        }  
+
+        .control{
+            /* border: 1px solid rebeccapurple; */
+            text-align: center;
+        }
+        .control button{
+            padding: 10px 20px;
+            border-radius: 25%;
+            margin: 10px;
+            background: pink;
+            cursor: pointer;
+            border: none;
+        }
+
+        .prev{}
+        .next{}
+
+    </style>
+</head>
+
+<body>
+    <h1>top slide img</h1>
+    <div class="gallery">
+        <div class="view">
+            <ul class="top_move">
+                <li><a href="#"><img src="img/animal01.png" alt="animal01"></a></li>
+                <li><a href="#"><img src="img/animal02.png" alt="animal02"></a></li>
+                <li><a href="#"><img src="img/animal03.png" alt="animal03"></a></li>
+                <li><a href="#"><img src="img/animal04.png" alt="animal04"></a></li>
+                <li><a href="#"><img src="img/animal05.png" alt="animal05"></a></li>
+            </ul><!-- top_move -->
+        </div><!-- view -->
+
+        <div class="control">
+            <button class="prev">prev</button>
+            <button class="next">next</button>
+        </div><!-- control -->
+    </div><!-- gallery -->
+</body>
+
+</html>

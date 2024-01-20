@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        ol,
+        li{
+            list-style: none;
+        }
+
+        a{
+            text-decoration: none;
+            color: inherit;
+        }
+
+        body{
+            background-color: #ddd;
+            color: #999;
+        }
+
+        .wrap{
+            width: 800px;
+            margin: 0 auto;
+            box-shadow: 0px 50px 10px #999;
+        }
+
+        .ninja {}
+
+        .ninja .tt{
+            background-color: #fff;
+            position: relative;
+        }
+
+        .ninja .tt img {
+            position: absolute;
+            bottom: 0;
+            left: -100px;
+            display: none;
+        }
+
+        .ninja .tt h2{
+            height: 60px;
+            line-height: 60px;
+            text-align: right;
+            padding: 0 20px;
+            background-color: #f1f1f1;
+            border-bottom: 1px solid #999;
+            cursor: pointer;
+            background-image: url("img/sprite.png");
+            background-repeat: no-repeat;
+        }
+
+        .ninja .tt h2:hover{
+            background-color: #fff;
+        }
+
+        .ninja .tt h2.on{
+            background-position: left bottom;
+            background-color: white;
+        }
+
+        .ninja .blue h2.on {
+            color: blue;
+        }
+
+        .ninja .purple h2.on {
+            color: purple;
+        }
+
+        .ninja .red h2.on {
+            color: red;
+        }
+
+        .ninja .green h2.on {
+            color: green;
+        }
+
+
+        .ninja .tt p{
+            text-align: right;
+            font-size: 14px;
+            line-height: 1.5em;
+            padding: 20px 20px 20px 350px;
+            display: none;
+        }
+    </style>
+    <script src="script/jquery-3.7.1.js"></script>
+    <script lang="java">
+        $(function(){
+
+            $(".tt").click(function(){
+
+                var me= $(this).children("h2") //펼침
+                   var friend = $(this).siblings().children("h2") //닫힘 
+
+
+                if( me.hasClass("on") == true  ){
+                    me.removeClass("on");
+                    me.prev().fadeOut();
+                    me.next().slideUp();
+
+                }else {
+                    me.addClass("on");
+                    me.prev().fadeIn();
+                    me.next().slideDown();
+
+                    friend.removeClass("on");
+                    friend.prev().fadeOut();
+                    friend.next().slideUp();   
+ 
+                } //if
+
+
+
+            }) //click  
+
+
+
+            $(".logo").click(function(){
+                $(".ninja h2").removeClass("on");
+                $(".ninja img").fadeOut();
+                $(".ninja p").slideUp();
+            }) //click
+
+
+        }) //jquery
+
+    </script>
+</head>
+
+<body>
+    <div class="wrap">
+        <h1 class="logo"><a href="#"><img src="img/turtle.png" alt="logo"></a></h1>
+        <ul class="ninja">
+            <li class="tt blue">
+                <img src="img/cha01.png" alt="cha01">
+                <h2>Leonardo</h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero deserunt modi quidem. Illum vitae
+                    consectetur possimus, tempora temporibus doloribus cum repellendus hic praesentium obcaecati
+                    eveniet, placeat error neque molestiae ratione.
+                </p>
+            </li><!-- blue -->
+            <li class="tt purple">
+                <img src="img/cha02.png" alt="cha02">
+                <h2>Donatello</h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero deserunt modi quidem. Illum vitae
+                    consectetur possimus, tempora temporibus doloribus cum repellendus hic praesentium obcaecati
+                    eveniet, placeat error neque molestiae ratione.
+                </p>
+            </li><!-- purple -->
+            <li class="tt red">
+                <img src="img/cha03.png" alt="cha03">
+                <h2>Raphael</h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero deserunt modi quidem. Illum vitae
+                    consectetur possimus, tempora temporibus doloribus cum repellendus hic praesentium obcaecati
+                    eveniet, placeat error neque molestiae ratione.
+                </p>
+            </li><!-- red -->
+            <li class="tt green">
+                <img src="img/cha04.png" alt="cha04">
+                <h2>michelangelo</h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero deserunt modi quidem. Illum vitae
+                    consectetur possimus, tempora temporibus doloribus cum repellendus hic praesentium obcaecati
+                    eveniet, placeat error neque molestiae ratione.
+                </p>
+            </li><!-- green -->
+        </ul>
+    </div><!-- wrap -->
+</body>
+
+</html>

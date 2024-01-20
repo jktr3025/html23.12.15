@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script/jquery-3.7.1.js"></script>
+    <script src="script/jquery-ui.js"></script>
+    <script lang="java">
+       $(document).ready(function(){
+
+       }) //jquery
+
+
+        $(window).scroll(function(){
+          var top =  $(window).scrollTop();
+          console.log("top : " , top)
+
+          $(".quick").css({"top":top})     
+          //css변경은 고정은 되지만
+          // 스크롤에 따라 따라오는 듯 한 효과가 안 보이기에 
+          //실제css에서 quick에 transition 걸어줘야 효과가 보임
+          
+        }) //window
+
+        // 윈도우가 스크롤이 되면 처리해줄 명령어
+        // 스크롤 탑 스크롤 레프트
+    </script>
+
+    <style type="text/css">
+        body {
+            height: 10000px;
+        }
+
+        .quick {
+            width: 150px;
+            background: pink;
+            border-radius: 10px;
+            position: absolute;
+            border: 2px solid purple;
+            right: 0;
+            top: 0;
+            margin-top: 200px;
+            margin-right: 20px;
+            transition: all 0.8s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quick">
+        <ul>
+            <li><a href="#">menu1</a></li>
+            <li><a href="#">menu2</a></li>
+            <li><a href="#">menu3</a></li>
+            <li><a href="#">menu4</a></li>
+            <li><a href="#">menu5</a></li>
+        </ul>
+    </div><!-- quick -->
+</body>
+
+</html>

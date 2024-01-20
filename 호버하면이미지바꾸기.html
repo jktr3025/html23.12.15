@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script/jquery-3.7.1.js"></script>
+    <script lang="java">
+        $(function(){
+
+         
+
+            $(".box p").hover(function(){
+
+                var bg = $(this).attr("bg");
+            var txt = $(this).attr("txt");
+            var bg1 = $(this).attr("bg1");
+        
+
+                $(this).text(txt);
+                $(this).css({background:bg, color:bg1});
+            }, function(){
+
+                var txt1 = $(this).attr("txt1");
+
+                $(this).text(txt1);
+            })//hover box p
+
+            $(".gallery a").hover(function(){
+
+                var img2=$(this).find("img").attr("img2")
+
+                $(this).find("img").attr("src", img2);
+                
+            }, function(){
+                var img1=$(this).find("img").attr("img1")
+                $(this).find("img").attr("src", img1)
+            })//hover gallery a
+
+
+
+
+        })//jquery
+    </script>
+</head>
+<body>
+    <div class="box">
+        <p bg="red" txt="HTML" bg1="#000" txt1="홍길동">홍길동</p>
+        <p bg="blue" txt="CSS" bg1="#fad" txt1="김나리">김나리</p>
+        <p bg="green" txt="JAVA" bg1="#325" txt1="정이서">정이서</p>
+        <p bg="purple" txt="CODE" bg1="#674" txt1="안현지">안현지</p>
+        <p bg="orange" txt="DOCUMENT" bg1="#000" txt1="오하이">오하이</p>
+    </div>
+
+    <div class="gallery">
+        <a href="#">
+            <img src="img/normal_01.png" alt="normal_01" img1="img/normal_01.png" img2="img/normal_05.png">
+        </a>
+        <a href="#">
+            <img src="img/normal_02.png" alt="normal_01" img1="img/normal_02.png" img2="img/normal_06.png">
+        </a>
+        <a href="#">
+            <img src="img/normal_03.png" alt="normal_01" img1="img/normal_03.png" img2="img/normal_07.png">
+        </a>
+        <a href="#">
+            <img src="img/normal_04.png" alt="normal_01" img1="img/normal_04.png" img2="img/normal_08.png">
+        </a>
+        </div><!-- gallery -->
+
+</body>
+</html>

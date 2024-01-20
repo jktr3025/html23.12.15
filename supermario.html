@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .logo{
+            display: none;
+        }
+        body{
+            text-align: center;
+            font-family: 'Lobster';
+            padding-top: 5%;
+        }
+        img{
+            vertical-align: bottom;
+            cursor: pointer;
+        }
+        .menu{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 380px;
+            /* border: 1px silver solid; */
+            
+        }
+        h1{
+            font-size: 130px;
+            color: gray;
+            height: 180px;
+        }
+        .menu img{
+            position: relative;
+            top: -1500px;
+            opacity: 0;
+        }
+        .menu img.drop{
+            top: 0;
+            opacity: 1;
+        }
+    </style>
+
+    <script src="script/jquery-3.7.1.js"></script>
+    <script src="script/jquery-ui.js"></script>
+    <script lang="java">
+        $(function(){
+            $(".logo").fadeIn(1000);
+
+            var gap = 500;
+
+            $(".logo").click(function(){
+                // $(".menu img").toggleClass("drop", 1000);     //3가지 이미지가 한 번에 떨어지고 올라감
+                $(".menu img").eq(0).delay(gap*0).toggleClass("drop", 1000 , "easeOutElastic");
+                $(".menu img").eq(1).delay(gap*1).toggleClass("drop", 1000 ,"easeInBounce" );
+                $(".menu img").eq(2).delay(gap*2).toggleClass("drop", 1000 , "easeInCubic");
+                $(".menu h1").text("super mario").css({"color":"gray"})
+            }) //click
+            //easein 효과
+
+            $(".menu img").eq(0).click(function(){
+                $(".menu h1").text("mario").css({"color":"red"})
+            })
+            $(".menu img").eq(1).click(function(){
+                $(".menu h1").text("luigi").css({"color":"green"})
+            })
+            $(".menu img").eq(2).click(function(){
+                $(".menu h1").text("toad").css({"color":"yellow"})
+            })
+
+
+        }) //jquery
+    </script>
+</head>
+<body>
+    <img class="logo" src="img/logo.png" alt="logo">
+    <div class="menu">
+        <h1>super mario</h1>
+        <img src="img/icon01.png" alt="mario">
+        <img src="img/icon02.png" alt="luigi">
+        <img src="img/icon03.png" alt="toad">
+    </div>
+   
+
+</body>
+</html>

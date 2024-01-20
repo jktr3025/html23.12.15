@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .contents{
+            width: 300px;
+            /* border: 1px solid darkcyan; */
+            height: 200px;
+            position: relative;
+        }
+        .contents > div{}
+        .contents .box{
+            width: 300px;
+            height: calc(200px - 35px);
+            background: beige;
+            position: absolute;
+            top: 35px;
+            left: 0;
+            /* border: 1px saddlebrown solid; */
+        }
+        .contents h2{
+            background: #ddd;
+            width: 100px;
+            height: 35px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 35px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            cursor: pointer;
+            /* border: 1px solid darkblue; */
+        }
+        .notice .box{}
+        .gallery h2{
+            left: 105px;
+        }
+        .gallery .box{
+            display: none;
+        }
+        .contents h2.on{
+            background: beige;
+        }
+
+        /* 공지사항이랑 갤러리 전체를를 포지션을 앱솔루트주면 갤러리를 위치를 보이도록 미뤄도
+        갤러리가 상위이기 떄문에 공지사항이 안 눌림
+        그래서 박스만 앱솔루트 주고 릴리티브를 노티스랑 갤러리에 각가 릴리티브 아니라
+        컨텐츠에 릴리티브를 주고 
+        h2도 각가 앱솔루트 시키고 갤러리 h2의 위치를 따로 줘야지 눌릴 수 있음 */
+    </style>
+
+<script src="script/jquery-3.7.1.js"></script>
+<script lang="java">
+    $(function(){
+
+        $(".contents h2").click(function(){
+            $(".contents h2").removeClass("on");
+            $(this).addClass("on");
+            $(".contents .box").hide();
+            $(this).next().show();
+        }) //click
+
+
+    }) //jquery
+</script>
+</head>
+<body>
+    <div class="contents">
+        <div class="notice">
+            <h2 class="on">공지사항</h2>
+            <div class="box">
+                공지공지 <br>
+                공지공지 <br>
+                공지공지 <br>
+                공지공지 <br>
+                공지공지 <br>
+            </div><!-- txt -->
+        </div><!-- notice -->
+        <div class="gallery">
+            <h2>갤러리</h2>
+            <div class="box">
+                사진사진 <br>
+                사진사진 <br>
+                사진사진 <br>
+                사진사진 <br>
+                사진사진 <br>
+            </div><!-- img -->
+        </div><!-- gallery -->
+    </div><!-- contents -->
+</body>
+</html>
